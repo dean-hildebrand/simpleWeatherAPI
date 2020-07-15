@@ -16,12 +16,16 @@ const url = "https://api.openweathermap.org/data/2.5/weather?q=London&units=metr
     response.on("data", function(data){
       const weatherData = JSON.parse(data)
       const temp = weatherData.main.temp
-      const description = weatherData.weather[0].description
-      console.log(description);
+      const weatherDescription = weatherData.weather[0].description
+      const icon = weatherData.weather[0].icon
+      const imageUrl = "https://openweathermap.org/img/wn/" + icon + "@2x.png"
+      console.log(imageUrl);
+      res.write("<p>The weather is currently " + weatherDescription + "<p>")
+      res.write("<h1>The temperature in London is " + temp + " degrees Celcius</h1>")
+      res.write("<img src=" + imageUrl + "/>")
+      res.send()
     })
   })
-
-  res.send("Serving is running and working correctly")
 })
 
 
