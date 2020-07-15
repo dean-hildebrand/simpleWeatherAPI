@@ -6,7 +6,7 @@ const app = express()
 
 
 app.get('/', function(req, res) {
-  res.send("Home route")
+  res.send("Serving is running and working correctly")
 })
 
 
